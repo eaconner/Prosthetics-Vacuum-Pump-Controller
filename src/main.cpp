@@ -5,6 +5,24 @@
  * @version 2021.0218.1
  * @copyright Copyright (c) 2021
  * 
+ * @mainpage Prosthetics Vacuum Pump Controller
+ * 
+ * @section intro_sec Introduction
+ * 
+ * Designed to maintain a set vacuum pressure for prosthetic arms and legs.
+ * 
+ * @section dependencies Dependencies
+ * 
+ * [Adafruit MPRLS Library] (https://github.com/adafruit/Adafruit_MPRLS)
+ * 
+ * @section author Author
+ * 
+ * Written by Eric Conner for EricConner.net.
+ * 
+ * @section license License
+ *
+ * ###MIT license###
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the
  * Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
  * and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -15,6 +33,11 @@
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
  * ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * @section changes Changes
+ * 
+ * 2021.0218.0 - Initial release
+ * 2021.0218.1 - Added destructor for Pump class
  */
 
 #include "main.h"
