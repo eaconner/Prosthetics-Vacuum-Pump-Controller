@@ -2,7 +2,6 @@
  * @file pump.h
  * 
  * @author Eric Conner (Eric@EricConner.net)
- * @version 2021.0218.1
  * @copyright Copyright (c) 2021
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the
@@ -25,7 +24,7 @@
 
 class Pump {
 public:
-    Pump();
+    Pump(unsigned short onTime = 10000, unsigned short offTime = 5000);
     ~Pump();
 
     void On();
@@ -37,9 +36,9 @@ private:
         COOLDOWN
     };
 
-    state status = STOPPED;
-    unsigned long OnTime = 0;
-    unsigned long OffTime = 0;
-    unsigned short maxOnTime = 10000;  // Time in ms (10sec)
-    unsigned short minOffTime = 5000;  // Time in ms (5sec)
+    state status;
+    unsigned long OnTime;
+    unsigned long OffTime;
+    unsigned short maxOnTime;
+    unsigned short minOffTime;
 };

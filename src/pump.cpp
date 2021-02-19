@@ -2,7 +2,6 @@
  * @file pump.cpp
  * 
  * @author Eric Conner (Eric@EricConner.net)
- * @version 2021.0218.1
  * @copyright Copyright (c) 2021
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the
@@ -21,11 +20,16 @@
 
 /**
  * @brief Construct a new Pump:: Pump object
+ * 
+ * @param onTime 
+ * @param offTime 
  */
-Pump::Pump() {
+Pump::Pump(unsigned short onTime, unsigned short offTime) {
     pinMode(PUMP_PIN, OUTPUT);  // Setup the output pin for Pump
     digitalWrite(PUMP_PIN, LOW);  // Seting the Pump output pin LOW turns the Pump off
     Pump::status = STOPPED;
+    Pump::maxOnTime = onTime;
+    Pump::minOffTime = offTime;
 }
 
 /**
