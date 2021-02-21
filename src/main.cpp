@@ -2,12 +2,12 @@
  * @file main.cpp
  * 
  * @author Eric Conner (Eric@EricConner.net)
- * @version 2021.0219.0
+ * @version 2021.0220.0
  * @copyright Copyright (c) 2021
  * 
  * @mainpage Prosthetics Vacuum Pump Controller
  * 
- * @section intro_sec Introduction
+ * @section introduction Introduction
  * 
  * Designed to maintain a set vacuum pressure for prosthetic arms and legs.
  * 
@@ -17,15 +17,16 @@
  * 
  * @section author Author
  * 
- * Written by Eric Conner for EricConner.net.
+ * Eric Conner (Eric@EricConner.net)
  * 
  * @section license License
  *
- * ###MIT license###
+ * ### MIT license ###
  * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the
- * Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
- * and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify,
+ * merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished
+ * to do so, subject to the following conditions:
  * 
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * 
@@ -36,9 +37,10 @@
  * 
  * @section changes Changes
  * 
- * 2021.0218.0 - Initial release
- * 2021.0218.1 - Added destructor for Pump class
+ * 2021.0220.0 - Set DEBUG to false and misc. other changes
  * 2021.0219.0 - Added option to specify on and off times for Pump
+ * 2021.0218.1 - Added destructor for Pump class
+ * 2021.0218.0 - Initial release
  */
 
 #include "main.h"
@@ -53,7 +55,7 @@ Pump pump = Pump(10000,5000);
 void setup() {
     if (DEBUG) {
         Serial.begin(115200);  // Setup serial connection for displaying text if we are in debug mode
-        Serial.println("Prosthetic Vacuum Pump - v2021.0219.0");
+        Serial.println("Prosthetic Vacuum Pump - v2021.0220.0");
     }
 
     // Start the MPRLS pressure sensor
