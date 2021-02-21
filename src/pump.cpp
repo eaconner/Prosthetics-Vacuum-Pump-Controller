@@ -20,24 +20,28 @@
 #include "pump.h"
 
 /**
- * @brief Construct a new Pump:: Pump object
+ * @brief Construct a new Pump::Pump object
  * 
- * @param onTime 
- * @param offTime 
+ * @param pumpPin Output pin that the pump is connected to
+ * @param onTime Maximum time to run the pump in milliseconds, default: 10,000
+ * @param offTime Minimum time to stop the pump to cool down, default: 5,000
  */
-Pump::Pump(unsigned short onTime, unsigned short offTime) {
-    pinMode(PUMP_PIN, OUTPUT);  // Setup the output pin for Pump
-    digitalWrite(PUMP_PIN, LOW);  // Seting the Pump output pin LOW turns the Pump off
+Pump::Pump(int pumpPin, unsigned short onTime, unsigned short offTime) {
+    Pump::pumpPin = pumpPin;
+    Pump::onTimer = 0;  // Reset onTimer to 0
+    Pump::offTimer = 0;  // Reset offTimer to 0
     Pump::status = STOPPED;
     Pump::maxOnTime = onTime;
     Pump::minOffTime = offTime;
+    pinMode(Pump::pumpPin, OUTPUT);  // Setup the output pin for Pump
+    digitalWrite(Pump::pumpPin, LOW);  // Seting the Pump output pin LOW turns the Pump off
 }
 
 /**
- * @brief Destroy the Pump:: Pump object
+ * @brief Destroy the Pump::Pump object
  */
 Pump::~Pump() {
-    digitalWrite(PUMP_PIN, LOW);  // Seting the Pump output pin LOW turns the Pump off
+    digitalWrite(Pump::pumpPin, LOW);  // Seting the Pump output pin LOW turns the Pump off
     Pump::status = STOPPED;
 }
 
@@ -47,21 +51,21 @@ Pump::~Pump() {
 void Pump::On() {
     // If the pump is off and cooled down turn the pump on, set the status to running and start the running timer
     if (Pump::status == STOPPED) {
-        digitalWrite(PUMP_PIN, HIGH);
+        digitalWrite(Pump::pumpPin, HIGH);
         Pump::status = RUNNING;
-        Pump::OnTime = millis();
+        Pump::onTimer = millis();
     }
     
     if (Pump::status == RUNNING) {
         // If the pump has been running for 10 seconds turn it off to prevent overheating
-        if (millis() - Pump::OnTime >= Pump::maxOnTime) {
+        if (millis() - Pump::onTimer >= Pump::maxOnTime) {
             Pump::Off();
         }
     }
 
     if (Pump::status == COOLDOWN) {
         // If the pump has been cooled down for 5 seconds set the status to stopped
-        if (millis() - Pump::OffTime >= Pump::minOffTime) {
+        if (millis() - Pump::offTimer >= Pump::minOffTime) {
             Pump::status = STOPPED;
         }
     }
@@ -73,14 +77,14 @@ void Pump::On() {
 void Pump::Off() {
     // If the pump is running turn it off and start the cooldown timer
     if (Pump::status == RUNNING) {
-        digitalWrite(PUMP_PIN, LOW);
-        Pump::OffTime = millis();
+        digitalWrite(Pump::pumpPin, LOW);
+        Pump::offTimer = millis();
         Pump::status = COOLDOWN;
     }
     
     if (Pump::status == COOLDOWN) {
         // If the pump has been cooled down for 5 seconds set the status to stopped
-        if (millis() - Pump::OffTime >= Pump::minOffTime) {
+        if (millis() - Pump::offTimer >= Pump::minOffTime) {
             Pump::status = STOPPED;
         }
     }

@@ -21,14 +21,12 @@
 
 #include <Arduino.h>
 
-#define PUMP_PIN 5  // Pin that the Pump is connected to
-
 /**
  * @brief Pump controller class
  */
 class Pump {
 public:
-    Pump(unsigned short onTime = 10000, unsigned short offTime = 5000);
+    Pump(int pumpPin = -1, unsigned short onTime = 10000, unsigned short offTime = 5000);
     ~Pump();
 
     void On();
@@ -40,9 +38,10 @@ private:
         COOLDOWN
     };
 
-    state status;
-    unsigned long OnTime;
-    unsigned long OffTime;
-    unsigned short maxOnTime;
-    unsigned short minOffTime;
+    state status;  // Current pump status
+    int pumpPin;  // Output pin that the pump is connected to
+    unsigned long onTimer;  // Variable used to store the pump runing timer
+    unsigned long offTimer;  // Variable used to store the pump cooldown timer
+    unsigned short maxOnTime;  // Maximum time to run the pump in milliseconds, default: 10,000
+    unsigned short minOffTime;  // Minimum time to stop the pump to cool down, default: 5,000
 };

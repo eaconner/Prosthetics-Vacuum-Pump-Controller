@@ -23,8 +23,9 @@
 #include <avr/wdt.h>
 #include "Adafruit_MPRLS.h"
 
-bool DEBUG = false;  // Set to true for serial output
-float setPressure = 440.23;  // Set point for vacuum to maintain in hPa (440.23hPa = 13inHg)
+const bool DEBUG = false;  // Set to true for serial output
+const int pumpPin = 5;  // Microcontroller pin that the pump is connected to
+const float setPressure = 440.23;  // Set point to maintain in hPa (440.23hPa = 13inHg)
 
 void setup();
 void loop();

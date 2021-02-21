@@ -2,7 +2,7 @@
  * @file main.cpp
  * 
  * @author Eric Conner (Eric@EricConner.net)
- * @version 2021.0220.0
+ * @version 2021.0221.0
  * @copyright Copyright (c) 2021
  * 
  * @mainpage Prosthetics Vacuum Pump Controller
@@ -37,6 +37,7 @@
  * 
  * @section changes Changes
  * 
+ * 2021.0221.0 - Revised Pump class to define pump pin when pump is initilized
  * 2021.0220.0 - Set DEBUG to false and misc. other changes
  * 2021.0219.0 - Added option to specify on and off times for Pump
  * 2021.0218.1 - Added destructor for Pump class
@@ -47,7 +48,7 @@
 #include "pump.h"
 
 Adafruit_MPRLS mpr = Adafruit_MPRLS();  // Initilize the Pressure Sensor
-Pump pump = Pump(10000,5000);
+Pump pump = Pump(pumpPin);  // Initilize the Pump
 
 /**
  * @brief Standard Arduino setup function, this initilizes everything and then jumps to loop().
@@ -55,11 +56,11 @@ Pump pump = Pump(10000,5000);
 void setup() {
     if (DEBUG) {
         Serial.begin(115200);  // Setup serial connection for displaying text if we are in debug mode
-        Serial.println("Prosthetic Vacuum Pump - v2021.0220.0");
+        Serial.println("Prosthetic Vacuum Pump - v2021.0221.0");
     }
 
     // Start the MPRLS pressure sensor
-    if(! mpr.begin()) {
+    if(!mpr.begin()) {
         // Wait for sensor to connect
         while(1) {
             delay(10);

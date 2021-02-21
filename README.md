@@ -24,6 +24,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Changes
 
+- 2021.0221.0 - Revised Pump class to define pump pin when pump is initilized
 - 2021.0220.0 - Set DEBUG to false and misc. other changes
 - 2021.0219.0 - Added option to specify on and off times for Pump
 - 2021.0218.1 - Added destructor for Pump class
