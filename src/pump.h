@@ -22,6 +22,9 @@
 
 #define PUMP_PIN 5  // Pin that the Pump is connected to
 
+/**
+ * @brief Pump controller class
+ */
 class Pump {
 public:
     Pump(unsigned short onTime = 10000, unsigned short offTime = 5000);
