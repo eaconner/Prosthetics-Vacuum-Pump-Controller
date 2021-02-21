@@ -83,7 +83,7 @@ void loop() {
         pump.Off();
     }
 
-    delay(1000);
+    delay(750);
     wdt_reset();
 }
 

@@ -23,7 +23,7 @@
 #include <avr/wdt.h>
 #include "Adafruit_MPRLS.h"
 
-const bool DEBUG = false;  // Set to true for serial output
+const bool DEBUG = true;  // Set to true for serial output
 const int pumpPin = 5;  // Microcontroller pin that the pump is connected to
 const float setPressure = 440.23;  // Set point to maintain in hPa (440.23hPa = 13inHg)
 
