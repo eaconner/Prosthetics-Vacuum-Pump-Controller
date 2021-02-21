@@ -59,7 +59,7 @@ void setup() {
     // Start the MPRLS pressure sensor
     if(! mpr.begin()) {
         // Wait for sensor to connect
-            while(1) {
+        while(1) {
             delay(10);
         }
     }
