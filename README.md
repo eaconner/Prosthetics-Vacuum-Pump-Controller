@@ -4,6 +4,8 @@
 
 Designed to maintain a set vacuum pressure for prosthetic arms and legs.
 
+![3D Printed Case](/Case/Case.png)
+
 ## Dependencies
 
 [Adafruit MPRLS Library](https://github.com/adafruit/Adafruit_MPRLS)
