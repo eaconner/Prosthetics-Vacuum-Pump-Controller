@@ -60,7 +60,7 @@ Pump pump = Pump(pumpPin);  // Initilize the Pump
 void setup() {
     if (DEBUG) {
         Serial.begin(115200);  // Setup serial connection for displaying text if we are in debug mode
-        Serial.println("Prosthetic Vacuum Pump - v2021.0504.0");
+        Serial.println("Prosthetic Vacuum Pump - v2021.0628.0");
     }
 
     // Start the MPRLS pressure sensor
