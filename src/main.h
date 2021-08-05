@@ -25,7 +25,10 @@
 
 const bool DEBUG = true;  // Set to true for serial output
 const int pumpPin = 5;  // Microcontroller pin that the pump is connected to
-const float setPressure = 440.23;  // Set point to maintain in hPa (440.23hPa = 13inHg)
+const float hPa = 33.8638462;
+const float setPressure = 13 * hPa;  // Set point to maintain in hPa
+const float setMinPressure = 13 * hPa;  // Min set point to maintain in hPa
+const float setMaxPressure = 15 * hPa;  // Max set point to maintain in hPa
 
 void setup();
 void loop();

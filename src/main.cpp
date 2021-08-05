@@ -2,7 +2,7 @@
  * @file main.cpp
  * 
  * @author Eric Conner (Eric@EricConner.net)
- * @version 2021.0221.0
+ * @version 2021.0628.0
  * @copyright Copyright (c) 2021
  * 
  * @mainpage Prosthetics Vacuum Pump Controller
@@ -20,8 +20,6 @@
  * Eric Conner (Eric@EricConner.net)
  * 
  * @section license License
- *
- * ### MIT license ###
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify,
@@ -37,10 +35,16 @@
  * 
  * @section changes Changes
  * 
+ * 2021.0628.0 - Added min/max set points
+ * 
  * 2021.0221.0 - Revised Pump class to define pump pin when pump is initilized
+ * 
  * 2021.0220.0 - Set DEBUG to false and misc. other changes
+ * 
  * 2021.0219.0 - Added option to specify on and off times for Pump
+ * 
  * 2021.0218.1 - Added destructor for Pump class
+ * 
  * 2021.0218.0 - Initial release
  */
 
@@ -56,7 +60,7 @@ Pump pump = Pump(pumpPin);  // Initilize the Pump
 void setup() {
     if (DEBUG) {
         Serial.begin(115200);  // Setup serial connection for displaying text if we are in debug mode
-        Serial.println("Prosthetic Vacuum Pump - v2021.0221.0");
+        Serial.println("Prosthetic Vacuum Pump - v2021.0504.0");
     }
 
     // Start the MPRLS pressure sensor
@@ -64,6 +68,7 @@ void setup() {
         // Wait for sensor to connect
         while(1) {
             delay(10);
+            Serial.println("Waiting for sensor...");
         }
     }
 
@@ -77,9 +82,11 @@ void setup() {
  * @brief Standard Arduino loop fuction, this is our main code loop.
  */
 void loop() {
-    if (getPressure() > setPressure) {
+    if (getPressure() >= setMaxPressure) {  // If the pressure is greater than the setMinPressure turn the pump on.
         pump.On();
-    } else {
+    }
+
+    if (getPressure() <= setMinPressure) {  // If the pressure is greater than the setMaxPressure turn the pump off.
         pump.Off();
     }
 
